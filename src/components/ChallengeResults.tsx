@@ -144,7 +144,7 @@ const ChallengeResults: React.FC<ChallengeResultsProps> = ({ results, onClose })
                 </tr>
               </thead>
               <tbody>
-                {results.results.map((participant, index) => (
+                {results.results.map((participant) => (
                   <tr key={participant.user_id} className="border-b border-gray-100">
                     <td className="py-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ${

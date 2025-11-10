@@ -431,7 +431,7 @@ const ChallengeDetails: React.FC = () => {
           {/* Show AI Results if available */}
           {hasAIMeasurements && (
             <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {photos.filter(photo => photo.measurements?.ai_processed).map((photo, index) => (
+              {photos.filter(photo => photo.measurements?.ai_processed).map((photo) => (
                 <div key={photo.id} className="bg-green-500/20 rounded-lg p-4">
                   <h4 className="text-white font-bold mb-2">Week {photo.week} Results</h4>
                   <div className="space-y-2">

@@ -14,7 +14,7 @@ interface UserProfile {
 
 const EditProfile: React.FC = () => {
   const navigate = useNavigate();
-  const { user, token, logout } = useAuth();
+  const { user, token, } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');

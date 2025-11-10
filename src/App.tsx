@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
@@ -15,7 +15,7 @@ import Penalties from './pages/Penalties';
 
 const Homepage: React.FC = () => {
   const { user } = useAuth();
-  const [activeSection, setActiveSection] = useState('how-it-works');
+  // const [activeSection, setActiveSection] = useState('how-it-works');
 
   // Only redirect to dashboard if user is on the exact root path
   if (user && window.location.pathname === '/') {
@@ -67,12 +67,12 @@ const Homepage: React.FC = () => {
           >
             Start Your First Challenge - It's Free
           </Link>
-          <button 
+          {/* <button 
             onClick={() => setActiveSection('how-it-works')}
             className="block sm:inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl hover:bg-white/10 transition-all duration-300 text-lg"
           >
             See How It Works
-          </button>
+          </button> */}
         </div>
       </section>
 

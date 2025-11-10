@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+// import { useAuth } from '../contexts/AuthContext';
 
 interface Friend {
   id: string;
@@ -12,18 +12,16 @@ interface Friend {
 const FriendsList: React.FC = () => {
   const [friends, setFriends] = useState<Friend[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  const { token } = useAuth();
+  const [error] = useState(''); // Keep this for error handling
+  // const { token } = useAuth(); // Keep this for future API calls
 
   useEffect(() => {
-    // For now, we'll use mock data since we don't have a friends endpoint yet
-    // In a real app, you'd fetch from /api/friends
     loadFriends();
   }, []);
 
   const loadFriends = async () => {
-    // TODO: Replace with actual API call when backend is ready
+    // For now, we'll use mock data since we don't have a friends endpoint yet
+    // In a real app, you'd fetch from /api/friends
     setTimeout(() => {
       setFriends([
         {
