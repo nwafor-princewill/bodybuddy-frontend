@@ -68,7 +68,7 @@ const UserProfile: React.FC = () => {
 
       // Try REAL API first
       try {
-        const profileResponse = await fetch(`http://localhost:8080/api/users/${targetUserId}/profile`, {
+        const profileResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/users/${targetUserId}/profile`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -80,7 +80,7 @@ const UserProfile: React.FC = () => {
           setApiStatus('real');
           
           // Fetch challenges
-          const challengesResponse = await fetch(`http://localhost:8080/api/users/${targetUserId}/challenges`, {
+          const challengesResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/users/${targetUserId}/challenges`, {
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -92,7 +92,7 @@ const UserProfile: React.FC = () => {
           }
 
           // Fetch friends
-          const friendsResponse = await fetch(`http://localhost:8080/api/users/${targetUserId}/friends`, {
+          const friendsResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/users/${targetUserId}/friends`,{
             headers: {
               'Authorization': `Bearer ${token}`,
             },
@@ -191,7 +191,7 @@ const UserProfile: React.FC = () => {
 
   const sendFriendRequest = async (friendId: string) => {
     try {
-      const response = await fetch('http://localhost:8080/api/friends/request', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/friends/request`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

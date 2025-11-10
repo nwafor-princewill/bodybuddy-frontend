@@ -35,7 +35,7 @@ const EditProfile: React.FC = () => {
 
   const fetchCurrentProfile = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/users/me/profile', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/users/me/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -65,7 +65,7 @@ const EditProfile: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/users/profile', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/users/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

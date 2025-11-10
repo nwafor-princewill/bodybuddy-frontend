@@ -40,7 +40,7 @@ const Leaderboards: React.FC = () => {
       setIsLoading(true);
       
       // Fetch global leaderboard
-      const leaderboardResponse = await fetch('http://localhost:8080/api/leaderboard/global', {
+      const leaderboardResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/leaderboard/global`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -52,7 +52,7 @@ const Leaderboards: React.FC = () => {
       }
 
       // Fetch user stats
-      const statsResponse = await fetch('http://localhost:8080/api/stats/user', {
+      const statsResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/stats/user`,{
         headers: {
           'Authorization': `Bearer ${token}`,
         },

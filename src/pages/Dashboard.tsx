@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
 
   const fetchChallenges = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/challenges', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/challenges`,  {
         headers: {
           'Authorization': `Bearer ${token}`,
         },

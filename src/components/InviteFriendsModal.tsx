@@ -31,7 +31,7 @@ const InviteFriendsModal: React.FC<InviteFriendsModalProps> = ({
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/invitations/send', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/invitations/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

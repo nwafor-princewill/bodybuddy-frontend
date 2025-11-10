@@ -51,8 +51,7 @@ const Penalties: React.FC = () => {
       
       // Fetch penalties
       const statusParam = activeTab === 'all' ? '' : activeTab;
-      const penaltiesResponse = await fetch(
-        `http://localhost:8080/api/penalties/user${statusParam ? `?status=${statusParam}` : ''}`, 
+      const penaltiesResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/penalties/user${statusParam ? `?status=${statusParam}` : ''}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -66,7 +65,7 @@ const Penalties: React.FC = () => {
       }
 
       // Fetch stats
-      const statsResponse = await fetch('http://localhost:8080/api/penalties/stats', {
+      const statsResponse = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/penalties/stats`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -128,7 +127,7 @@ const Penalties: React.FC = () => {
     if (!selectedPenalty) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/api/penalties/${selectedPenalty.id}/complete`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/penalties/${selectedPenalty.id}/complete`,  {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +155,7 @@ const Penalties: React.FC = () => {
 
   const verifyPenalty = async (penaltyId: string) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/penalties/${penaltyId}/verify`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/penalties/${penaltyId}/verify`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

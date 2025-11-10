@@ -64,7 +64,7 @@ const Chat: React.FC<ChatProps> = ({ challengeId, isOpen, onClose }) => {
       setIsLoading(true);
       console.log('📚 Fetching chat history for challenge:', challengeId);
       
-      const response = await fetch(`http://localhost:8080/api/chat/${challengeId}/history`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/chat/${challengeId}/history`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -185,7 +185,7 @@ const Chat: React.FC<ChatProps> = ({ challengeId, isOpen, onClose }) => {
       console.log('🌐 WebSocket not connected, falling back to HTTP API');
       // Fallback to HTTP API
       try {
-        const response = await fetch('http://localhost:8080/api/chat/send', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/chat/send`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

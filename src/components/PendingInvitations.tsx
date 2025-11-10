@@ -25,7 +25,7 @@ const PendingInvitations: React.FC = () => {
 
   const fetchPendingInvitations = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/invitations/pending', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/invitations/pending`,{
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -46,7 +46,7 @@ const PendingInvitations: React.FC = () => {
 
   const handleAccept = async (invitationId: string) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/invitations/${invitationId}/accept`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/invitations/${invitationId}/accept`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -71,7 +71,7 @@ const PendingInvitations: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/api/invitations/${invitationId}/decline`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/invitations/${invitationId}/decline`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -84,7 +84,7 @@ const ChallengeDetails: React.FC = () => {
 
   const fetchChallenge = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/challenges/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/challenges/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -105,7 +105,7 @@ const ChallengeDetails: React.FC = () => {
 
   const fetchProgressPhotos = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/photos/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/photos/${id}`,  {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -122,7 +122,7 @@ const ChallengeDetails: React.FC = () => {
 
   const fetchChallengeResults = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/api/challenges/${id}/results`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/challenges/${id}/results`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -145,7 +145,7 @@ const ChallengeDetails: React.FC = () => {
 
     setCompletingChallenge(true);
     try {
-      const response = await fetch(`http://localhost:8080/api/challenges/${id}/complete`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/challenges/${id}/complete`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -175,7 +175,7 @@ const ChallengeDetails: React.FC = () => {
   const handlePhotosTaken = async (capturedPhotos: { front: string; side: string; back: string }) => {
     setUploading(true);
     try {
-      const response = await fetch('http://localhost:8080/api/photos/upload', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/photos/upload`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ const ChallengeDetails: React.FC = () => {
 
       if (latestPhoto) {
         // Save measurements to existing photo - NOW MATCHES BACKEND FORMAT
-        const response = await fetch('http://localhost:8080/api/measurements/update-photo', {
+       const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/measurements/update-photo`,{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

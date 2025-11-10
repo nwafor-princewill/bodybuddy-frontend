@@ -28,7 +28,7 @@ const Notifications: React.FC = () => {
   const fetchNotifications = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:8080/api/notifications?page=1', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/notifications?page=1`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -91,7 +91,7 @@ const Notifications: React.FC = () => {
 
   const markAsRead = async (notificationId: string) => {
     try {
-      await fetch(`http://localhost:8080/api/notifications/${notificationId}/read`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/notifications/${notificationId}/read`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -110,7 +110,7 @@ const Notifications: React.FC = () => {
 
   const archiveNotification = async (notificationId: string) => {
     try {
-      await fetch(`http://localhost:8080/api/notifications/${notificationId}/archive`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/notifications/${notificationId}/archive`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -125,7 +125,7 @@ const Notifications: React.FC = () => {
 
   const markAllAsRead = async () => {
     try {
-      await fetch('http://localhost:8080/api/notifications/read-all', {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/notifications/read-all`,  {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
